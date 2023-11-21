@@ -1,0 +1,29 @@
+{
+  "files.associations": {
+    "iostream": "cpp",
+    "xiosbase": "cpp",
+    "limits": "cpp",
+    "utility": "cpp",
+    "xutility": "cpp",
+    "cstdlib": "cpp",
+    "compare": "cpp",
+    "concepts": "cpp",
+    "cstddef": "cpp",
+    "cstdint": "cpp",
+    "cstdio": "cpp",
+    "cstring": "cpp",
+    "cwchar": "cpp",
+    "exception": "cpp",
+    "initializer_list": "cpp",
+    "new": "cpp",
+    "tuple": "cpp",
+    "type_traits": "cpp",
+    "vector": "cpp",
+    "xmemory": "cpp",
+    "xtr1common": "cpp"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.formatting.provider": "none"
+}
