@@ -5,55 +5,44 @@
 // #define int long long
 
 using ll = __int128;
-	
+// using ll = unsigned long long;
+
 using namespace std;
 
-
-ostream& operator<<(ostream& os, ll n){
-    string s = "";
-    do {
-        s = char(n % 10 + '0') + s;
-        n /= 10;
-    }while(n > 0);
-
-    return os << s;
+ostream& operator <<(ostream& cout, ll n){
+	string r = "";
+	do {
+		r = char((n % 10) + '0') + r;
+		n /= 10;
+	}while (n > 0);
+	cout << r;
+	return cout;
+	
 }
-
    
 void t_main(){
-    int n;
-    cin >> n;
-    vector<vector<ll>> dp(n+1, vector<ll> (10, 1));
+   int n, a, b;
+   cin >> n >> a >> b;
 
-    dp[1][0] = dp[1][8] = 0;
+   vector<vector<ll>> dp(n, vector<ll> (max(a,b)+1));
 
-    for(int i = 2; i <= n; i++){
-            dp[i][0] = dp[i-1][4] + dp[i-1][6];
-            dp[i][1] = dp[i-1][8] + dp[i-1][6];
-            dp[i][2] = dp[i-1][7] + dp[i-1][9];
-            dp[i][3] = dp[i-1][4] + dp[i-1][8];
-            dp[i][4] = dp[i-1][0] + dp[i-1][3]+ dp[i-1][9];
-            dp[i][5] = 0;
-            dp[i][6] = dp[i-1][0] + dp[i-1][1]+ dp[i-1][7];
-            dp[i][7] = dp[i-1][2] + dp[i-1][6];
-            dp[i][8] = dp[i-1][1] + dp[i-1][3];
-            dp[i][9] = dp[i-1][2] + dp[i-1][4];
-    }
-    ll s = 0;
-    for(int i = 0; i < 10; i++) s += dp[n][i];
-
-    cout << s;
-
-
-
+   for(int i = 0; i < n; i ++){
+		for(int j = 0; j <= max(a,b); j++){
+			if (i == 0) dp[i][j] = j+1;
+			else if (j == 0) dp[i][j] = 1;
+			else dp[i][j] = dp[i][j-1] + dp[i-1][j];
+		}
+   }
+    ll  r = dp[n-1][a] * dp[n-1][b];
+	cout << r;
 }
    
    
 signed main(){
     cin.tie(nullptr)->sync_with_stdio(false);
        
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
    
     int t = 1;
        
